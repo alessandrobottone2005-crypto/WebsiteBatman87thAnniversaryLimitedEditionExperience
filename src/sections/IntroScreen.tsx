@@ -33,14 +33,17 @@ export default React.memo(function IntroScreen({ onBegin, initialTime = 180, isM
       BatcavernAudio.start(2000);
     }, 1500);
 
-    const t1 = setTimeout(() => setIsHacked(true), 1500);
+    const t1 = setTimeout(() => {
+      setIsHacked(true);
+      setStep(1);
+    }, 1800);
 
     const timers: NodeJS.Timeout[] = [];
-    for (let i = 0; i < BRIEFING_TEXTS.length; i++) {
-      timers.push(setTimeout(() => setStep(i + 1), 2000 + i * 3000));
+    for (let i = 1; i < BRIEFING_TEXTS.length; i++) {
+      timers.push(setTimeout(() => setStep(i + 1), 1800 + i * 3000));
     }
     timers.push(
-      setTimeout(() => setStep(6), 2000 + BRIEFING_TEXTS.length * 3000)
+      setTimeout(() => setStep(6), 1800 + BRIEFING_TEXTS.length * 3000)
     );
 
     return () => {
@@ -59,7 +62,7 @@ export default React.memo(function IntroScreen({ onBegin, initialTime = 180, isM
         position: "fixed",
         inset: 0,
         zIndex: 50,
-        display: "inline-flex",
+        display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
@@ -220,10 +223,10 @@ export default React.memo(function IntroScreen({ onBegin, initialTime = 180, isM
                     display: "flex",
                     flexDirection: "column",
                     color: "white",
-                    fontSize: 80,
+                    fontSize: "clamp(36px, 5.5vw, 80px)",
                     fontFamily: "Space Grotesk, sans-serif",
                     fontWeight: 700,
-                    lineHeight: "81px",
+                    lineHeight: 1.1,
                     wordWrap: "break-word",
                     textShadow: "0px 0px 14px rgba(102, 0, 197, 1.00)",
                   }}
@@ -253,10 +256,10 @@ export default React.memo(function IntroScreen({ onBegin, initialTime = 180, isM
                     display: "flex",
                     flexDirection: "column",
                     color: "white",
-                    fontSize: 40,
+                    fontSize: "clamp(18px, 2.5vw, 40px)",
                     fontFamily: "Space Grotesk, sans-serif",
                     fontWeight: 400,
-                    lineHeight: "42px",
+                    lineHeight: 1.25,
                     wordWrap: "break-word",
                     textShadow: "0px 0px 14px rgba(102, 0, 197, 1.00)",
                   }}
@@ -359,6 +362,21 @@ export default React.memo(function IntroScreen({ onBegin, initialTime = 180, isM
       <div style={{ position: "absolute", top: 40, right: 40, width: 80, height: 80, borderTop: "1px solid rgba(255,215,0,0.15)", borderRight: "1px solid rgba(255,215,0,0.15)", zIndex: 5, pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: 40, left: 40, width: 80, height: 80, borderBottom: "1px solid rgba(255,215,0,0.15)", borderLeft: "1px solid rgba(255,215,0,0.15)", zIndex: 5, pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: 40, right: 40, width: 80, height: 80, borderBottom: "1px solid rgba(255,215,0,0.15)", borderRight: "1px solid rgba(255,215,0,0.15)", zIndex: 5, pointerEvents: "none" }} />
+
+      {/* ── Salta Briefing Button ─────────────────────────────── */}
+      {step < 6 && (
+        <button
+          type="button"
+          onClick={() => {
+            setIsHacked(true);
+            setStep(6);
+          }}
+          className="absolute bottom-8 right-12 z-20 flex items-center gap-2 px-4 py-2 border border-purple-500/40 bg-black/70 hover:bg-purple-950/60 hover:border-purple-400 text-purple-300 text-xs font-mono tracking-widest uppercase transition-all duration-200 cursor-pointer backdrop-blur-md select-none pointer-events-auto"
+        >
+          <span>SALTA INTRO</span>
+          <span className="text-gold">→</span>
+        </button>
+      )}
 
       {/* ── HUD label bottom-right (easter egg, intentionally hidden) ── */}
       <div

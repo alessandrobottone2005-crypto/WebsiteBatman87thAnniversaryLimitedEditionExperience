@@ -263,7 +263,7 @@ function PreorderButtonInner({ btnGlitch, onPreorder }: { btnGlitch: boolean; on
         {/* Scan highlight */}
         <motion.div
           style={{ position: "absolute", top: 0, left: "-100%", width: "60%", height: "100%", background: "linear-gradient(90deg, transparent, rgba(255,215,0,0.15), transparent)", pointerEvents: "none" }}
-          animate={{ left: ["−100%", "150%"] }}
+          animate={{ left: ["-100%", "150%"] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 0.5 }}
         />
 

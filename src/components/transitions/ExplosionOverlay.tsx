@@ -11,18 +11,15 @@ export default function ExplosionOverlay({ onReset, onSkip }: ExplosionOverlayPr
   const [countdown, setCountdown] = useState(15);
 
   useEffect(() => {
+    if (countdown <= 0) {
+      onReset();
+      return;
+    }
     const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          onReset();
-          return 0;
-        }
-        return prev - 1;
-      });
+      setCountdown((prev) => prev - 1);
     }, 1000);
     return () => clearInterval(timer);
-  }, [onReset]);
+  }, [countdown, onReset]);
 
   return (
     <div className="fixed inset-0 z-[300000] flex items-center justify-center bg-black overflow-hidden select-none">

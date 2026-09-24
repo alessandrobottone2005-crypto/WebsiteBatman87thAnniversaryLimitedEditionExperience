@@ -242,8 +242,8 @@
     scroll-behavior: smooth;
   }
 
-  * {
-    cursor: url('./assets/images/batman-cursor.png') 16 12, auto !important;
+  button, a, [role="button"], .cursor-pointer {
+    cursor: pointer;
   }
 
   body {

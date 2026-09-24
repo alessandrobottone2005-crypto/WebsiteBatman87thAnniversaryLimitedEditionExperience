@@ -21,6 +21,7 @@ const ThankYouPage = lazy(() => import("./sections/ThankYouPage"));
 import { useMobileDetection } from "./hooks/useMobileDetection";
 import { useMissionTimer } from "./hooks/useMissionTimer";
 import { useAudioSystem } from "./hooks/useAudioSystem";
+import BatComputerTest from "./components/BatComputerTest";
 
 
 
@@ -306,6 +307,14 @@ export default function App() {
   const handleBackFromCheckout = useCallback(() => changePhase("showreel"), [changePhase]);
   const handleGoToCheckout = useCallback(() => changePhase("checkout"), [changePhase]);
 
+  if (window.location.pathname === '/test-batcomputer') {
+    return (
+      <Suspense fallback={<div className="bg-black text-gold h-screen flex items-center justify-center">Caricamento...</div>}>
+        <BatComputerTest />
+      </Suspense>
+    );
+  }
+
   return (
     <div className="bg-black min-h-screen relative overflow-x-hidden">
       <AssetPreloader />
@@ -423,7 +432,6 @@ export default function App() {
                   src="./assets/videos/BatCaverna_PassaggioBatComputerAArmeria.mp4"
                   onEnded={() => setPhase("armeria")}
                   label="SPOSTAMENTO: ZONA ARMERIA"
-                  nextAsset="./assets/textures/BatCaverna360_ArmeriaArea.jpg"
                 />
               </Suspense>
             </motion.div>
@@ -442,7 +450,6 @@ export default function App() {
                   src="./assets/videos/BatCaverna_PassaggioArmeriaABatMobile.mp4"
                   onEnded={() => setPhase("batmobile")}
                   label="SPOSTAMENTO: ZONA BATMOBILE"
-                  nextAsset="./assets/textures/BatCaverna360_BatMobileArea.jpg"
                 />
               </Suspense>
             </motion.div>
@@ -452,7 +459,14 @@ export default function App() {
         {/* ── OTHER PHASES ──────────────────────────────────────────────── */}
         <AnimatePresence mode="wait">
           {phase === "intro" && (
-            <motion.div key="intro" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
+            <motion.div
+              key="intro"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="fixed inset-0 z-40"
+            >
               <IntroScreen 
                 onBegin={() => {
                   setPanoramaScene("batcomputer");

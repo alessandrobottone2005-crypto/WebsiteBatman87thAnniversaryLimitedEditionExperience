@@ -524,8 +524,8 @@ function SharedPanoramaCanvas({ scene, onProgress, baseCompleted, isPaused, onNe
     // ── BatComputer: video animato 360° ──────────────────────────────────
     if (scene === "batcomputer") {
       return loadVideoScene(
-        "./assets/textures/BatCaverna360_BatComputerArea.mp4",
-        "./assets/textures/BatCaverna360_BatComputerArea.jpg",
+        "./assets/textures/BatCaverna_Batcomputer360.mp4",
+        "./assets/textures/BatCaverna_Batcomputer360.jpg",
         "batcomputer"
       );
     }
@@ -533,16 +533,16 @@ function SharedPanoramaCanvas({ scene, onProgress, baseCompleted, isPaused, onNe
     // ── Armeria: video animato 360° ───────────────────────────────────────
     if (scene === "armeria") {
       return loadVideoScene(
-        "./assets/textures/BatCaverna360_ArmeriaArea.mp4",
-        "./assets/textures/BatCaverna360_ArmeriaArea.jpg",
+        "./assets/textures/BatCaverna_Armeria360.mp4",
+        "./assets/textures/BatCaverna_Armeria360.jpg",
         "armeria"
       );
     }
 
     // ── BatMobile: video animato 360° ─────────────────────────────────────
     return loadVideoScene(
-      "./assets/textures/BatCaverna360_BatMobileArea.mp4",
-      "./assets/textures/BatCaverna360_BatMobileArea.jpg",
+      "./assets/textures/BatCaverna_BatMobile360.mp4",
+      "./assets/textures/BatCaverna_BatMobile360.jpg",
       "batmobile"
     );
   }, [scene]);

@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 
 const IMAGE_ASSETS = [
-  // Fallback statici per i 360° (usati se la VideoTexture non è disponibile)
-  "./assets/textures/BatCaverna360_ArmeriaArea.jpg",
-  "./assets/textures/BatCaverna360_BatComputerArea.jpg",
-  "./assets/textures/BatCaverna360_BatMobileArea.jpg",
+  "./assets/images/screen.png",
+  "./assets/images/JollyJokerCard_Front.jpg",
+  "./assets/images/JollyJokerCard_Back.jpg",
+  "/logos-navbar_molecule.png",
+  "./assets/showreel/0001.webp",
+  "./assets/showreel/0800.webp",
 ];
 
 const VIDEO_ASSETS = [
   // Video 360° animati (render BatCaverna — tutti e tre gli ambienti)
-  "./assets/textures/BatCaverna360_ArmeriaArea.mp4",
-  "./assets/textures/BatCaverna360_BatComputerArea.mp4",
-  "./assets/textures/BatCaverna360_BatMobileArea.mp4",
+  "./assets/textures/BatCaverna_Batcomputer360.mp4",
+  "./assets/textures/BatCaverna_Armeria360.mp4",
+  "./assets/textures/BatCaverna_BatMobile360.mp4",
   // Video di passaggio tra zone
   "./assets/videos/BatCaverna_PassaggioBatComputerAArmeria.mp4",
   "./assets/videos/BatCaverna_PassaggioArmeriaABatMobile.mp4",
