@@ -180,3 +180,9 @@ Tutta la documentazione approfondita si trova nella cartella [`/docs`](./docs/).
 
 Uso accademico / dimostrativo — IUAD, Corso UI/UX Design.  
 Non destinato alla vendita. DC Comics / Batman è proprietà di Warner Bros. / DC Entertainment.
+
+## Deployment
+
+Sito pubblicato su Vercel: https://batman-87th-anniversary.vercel.app
+
+Branch di lavoro: `preview/draft-review` (bozza per revisione, non definitiva).
